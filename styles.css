@@ -85,11 +85,22 @@ body {
 }
 
 .menu-toggle {
-    display: none;
-    font-size: 1.8rem;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.1);
+    backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: auto;
     cursor: pointer;
+    transition: 0.3s;
 }
 
+.menu-toggle:hover {
+    background: rgba(255,255,255,0.2);
+}
 
 .nav-links {
     display: flex;
@@ -103,14 +114,14 @@ body {
         transform: none;
         width: 100%;
         border-radius: 0;
-        padding: 15px 20px;
+        padding: 10px 20px;
         position: fixed;
     }
 
     .menu-toggle {
         display: block;
         margin-left: auto;
-        font-size: 1.8rem;
+        font-size: 1.5rem;
         cursor: pointer;
         z-index: 2000;
     }
@@ -124,35 +135,71 @@ body {
     .nav-links {
         display: none;
         flex-direction: column;
-        gap: 15px;
+        align-items: flex-start; 
+        gap: 0; 
 
-        background: rgba(255, 255, 255, 0.05);
+        position: absolute;
+        top: 0;
+        right: 0;
+
+        height: 100vh;
+        width: 250px;
+
+        padding: 70px 0 20px 0; 
+
+        background: rgba(154, 202, 186, 0.238);
         backdrop-filter: blur(20px);
         -webkit-backdrop-filter: blur(20px);
 
-        border: 1px solid rgba(255, 255, 255, 0.15);
-        border-radius: 20px;
+        border-left: 1px solid rgba(153, 223, 195, 0.503);
+        border-radius: 20px 0 0 20px;
 
-        padding: 15px;
+        box-shadow: -10px 0 40px rgba(0, 0, 0, 0.427);
 
-        position: absolute;
-        right: 15px;
-        top: 100%;
+        transform: translateX(100%); 
+        opacity: 0;
+        pointer-events: none;
 
-        width: 200px;
+        transition: all 0.3s ease;
+    }
+
+    /* CUANDO SE ABRE */
+    .nav-links.active {
+        display: flex;
+        transform: translateX(0);
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+    /* LINKS */
+    .nav-links a {
+        width: 100%;
+        padding: 15px 25px;
+
+        margin-left: 0;   
+
+        display: flex;
+        align-items: center;
+
+        font-size: 1rem;
+        letter-spacing: 0.5px;
+
+        border-bottom: 1px solid rgba(255,255,255,0.08);
+
+        transition: 0.3s;
     }
 
     
-    .nav-links.active {
-        display: flex;
+    .nav-links a:last-child {
+        border-bottom: none;
     }
 
-  
-    .nav a {
-        font-size: 0.9rem;
-        margin-left: 0;
-        text-align: center;
+    /* HOVER */
+    .nav-links a:hover {
+        background: rgba(238, 248, 189, 0.362);
+        transform: translateX(8px);
     }
+
 
 }
 .logo-container {
@@ -246,7 +293,7 @@ dotlottie-player {
 @media (max-width: 768px) {
 
     .hero {
-        padding: 0 20px;
+        padding: 0 30px;
         min-height: auto;
     }
 
