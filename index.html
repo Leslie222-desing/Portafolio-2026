@@ -33,17 +33,23 @@
             </dotlottie-player>
         </div>
     </div>
-    <nav>
-        <a href="#inicio">Inicio</a>
-        <a href="#about">Sobre mí</a>
-        <a href="#skills">Skills</a>
-        <a href="#proyectos">Proyectos</a>
-        <a href="#contacto">Contacto</a>
-    </nav>
+<div class="menu-toggle" id="menu-toggle">
+  ☰
+</div>
+    <div class="nav-links" id="nav-links">
+        <nav>
+
+            <a href="#inicio">Inicio</a>
+            <a href="#about">Sobre mí</a>
+            <a href="#skills">Skills</a>
+            <a href="#proyectos">Proyectos</a>
+            <a href="#contacto">Contacto</a>
+        </nav>
+    </div>
 </header>
 
 <!-- HERO -->
-<section id="inicio" class="hero">
+<section id="inicio" class="hero" class="hero reveal">
     <div class="hero-container">
 
         <!-- TEXTO -->
@@ -92,7 +98,7 @@
 <!-- SOBRE MI -->
 <section id="about" class="about">
     <div  class="about-container" >
-        <div class="about-image">
+        <div class="about-image" class="reveal-left" >
                 <dotlottie-player  
                     src="assets/perfil.json" 
                     background="transparent" 
@@ -104,7 +110,7 @@
         </div>
         
 
-        <div>
+        <div class="about-text reveal-right">
             <h2>Sobre mí</h2>
             <p>
              Soy desarrolladora Full Stack Jr enfocada en la creación de soluciones que optimizan procesos y generan valor en entornos operativos. Me especializo en transformar procesos manuales en sistemas eficientes, combinando desarrollo, diseño y experiencia de usuario para crear herramientas funcionales, intuitivas y visualmente atractivas.
@@ -119,7 +125,7 @@
     <h2 class="section-title">Habilidades</h2>
     <div class="skills-wrapper">
         
-        <div class="skills-column">
+        <div class="skills-column" class="reveal-scale reveal-delay">
             <h3 class="column-title">Technical Skills</h3>
             
             <div class="skill-group">
@@ -143,7 +149,7 @@
             </div>
         </div>
 
-        <div class="skills-column">
+        <div class="skills-column" class="reveal-scale reveal-delay">
             <h3 class="column-title">Soft Skills</h3>
             
             <div class="skill-group">
@@ -172,7 +178,7 @@
         <div class="carousel-track">
 
 
-            <div class="project-card">
+            <div class="project-card" class="project-card reveal-scale reveal-delay">
             <img src="assets/gestion_indu.jpeg">
              <div class="project-text">
                 
@@ -182,7 +188,7 @@ Sistema automatizado de asignación de personal por semana y maquinaria que opti
 </p></div>
             </div>
 
-            <div class="project-card">
+            <div class="project-card" class="project-card reveal-scale reveal-delay ">
                 <img src="assets/categorias.jpeg">
                <div class="project-text"> <h3>Categorias</h3><br>
                <p>
@@ -190,7 +196,7 @@ Aplicación para la gestión de solicitudes de cambio de categoría de personal 
 </p></div>
             </div>
 
-            <div class="project-card">
+            <div class="project-card" class="project-card reveal-scale reveal-delay ">
                 <img src="assets/reporteador.png">
                 <div class="project-text">
                     <h3>Reporteador</h3><br>
@@ -206,7 +212,7 @@ Aplicación para la gestión de solicitudes de cambio de categoría de personal 
         <button class="next">›</button>
     </div>
 </section>
-<section id="contacto" class="contact">
+<section id="contacto" class="contact"  class="contact reveal">
     <div class="contact-container">
         <h2 class="section-title">Contactame</h2>
         <p class="contact-subtitle">¡Mis redes están abiertas!</p>
