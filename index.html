@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Leslie Muñiz | Developer</title>
+<link rel="stylesheet" href="styles.css">
+<script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script>
+</head>
+
+<body class="bg-animation">
+    <div class="lines">
+    <span style="left:10%"></span>
+    <span style="left:30%"></span>
+    <span style="left:50%"></span>
+    <span style="left:70%"></span>
+    <span style="left:90%"></span>
+</div>
+
+<div class="cursor-glow"></div>
+
+<!-- NAV -->
+<header class="nav">
+    <div class="logo-container">
+        <div id="lottie-logo">
+            <dotlottie-player 
+                src="assets/portafolio.json" 
+                background="transparent" 
+                speed="1" 
+                style="width: 100%; height: 100%;" 
+                loop 
+                autoplay>
+            </dotlottie-player>
+        </div>
+    </div>
+    <nav>
+        <a href="#inicio">Inicio</a>
+        <a href="#about">Sobre mí</a>
+        <a href="#skills">Skills</a>
+        <a href="#proyectos">Proyectos</a>
+        <a href="#contacto">Contacto</a>
+    </nav>
+</header>
+
+<!-- HERO -->
+<section id="inicio" class="hero">
+    <div class="hero-container">
+
+        <!-- TEXTO -->
+        <div class="hero-text">
+            <p class="intro">Hola, soy Leslie 👋</p>
+
+
+            <h1 class="puesto">
+                <span class="line line1">
+                    De<span class="icon-html">s</span>arrolladora
+                </span><br>
+                <span class="line line2">
+                    Full Sta<span class="icon-css">c</span>k
+                </span>
+            </h1>
+            <div class="hero-desc-container">
+                <p class="hero-desc typing-text">
+                    Desarrollo soluciones digitales orientadas a la automatización y mejora de procesos, con enfoque en eficiencia operativa.
+                </p>
+            </div>
+            <div class="hero-buttons">
+                <button onclick="scrollToSection('proyectos')">Ver proyectos</button>
+                <button class="ghost" onclick="scrollToSection('contacto')">Contactar</button>
+            </div>
+        </div>
+
+        <!-- IMAGEN INTERACTIVA -->
+
+
+        <div class="hero-image">
+            <div class="image-wrapper">
+                <dotlottie-player 
+                    src="assets/laptop.json" 
+                    background="transparent" 
+                    speed="1" 
+                    style="width: 100%; height: auto;" 
+                    loop 
+                    autoplay>
+                </dotlottie-player>
+                
+                <div class="circle"></div>
+            </div>
+        </div>
+</section>
+
+<!-- SOBRE MI -->
+<section id="about" class="about">
+    <div  class="about-container" >
+        <div class="about-image">
+                <dotlottie-player  
+                    src="assets/perfil.json" 
+                    background="transparent" 
+                    speed="1" 
+                    style="width: 100%; height: auto;" 
+                    loop 
+                    autoplay>
+                </dotlottie-player>
+        </div>
+        
+
+        <div>
+            <h2>Sobre mí</h2>
+            <p>
+             Soy desarrolladora Full Stack Jr enfocada en la creación de soluciones que optimizan procesos y generan valor en entornos operativos. Me especializo en transformar procesos manuales en sistemas eficientes, combinando desarrollo, diseño y experiencia de usuario para crear herramientas funcionales, intuitivas y visualmente atractivas.
+            Me distingo por ser una persona proactiva, creativa y en constante aprendizaje, con interés en el diseño y la mejora continua de la experiencia digital. Disfruto trabajar en equipo, adaptarme a nuevos retos y aportar soluciones que no solo funcionen, sino que también generen una experiencia clara y eficiente para el usuario.
+            </p>
+        </div>
+
+    </div>
+</section>
+<!--SKILLS-->
+<section id="skills" class="skills">
+    <h2 class="section-title">Habilidades</h2>
+    <div class="skills-wrapper">
+        
+        <div class="skills-column">
+            <h3 class="column-title">Technical Skills</h3>
+            
+            <div class="skill-group">
+                <h4 id="tecnico">Lenguajes de Programación</h4>
+                <p>Python, JavaScript, PHP, Java</p>
+            </div>
+
+            <div class="skill-group">
+                <h4 id="tecnico" >Frameworks y Herramientas</h4>
+                <p>Angular, Flet, HTML5 & CSS3, Unity, GitHub, VS Code</p>
+            </div>
+
+            <div class="skill-group">
+                <h4 id="tecnico">Bases de Datos</h4>
+                <p>MySQL (Diseño, administración y optimización)</p>
+            </div>
+
+            <div class="skill-group">
+                <h4 id="tecnico">Metodologías de Trabajo</h4>
+                <p>Scrum, Enfoque Agile, Sprints y entregas incrementales</p>
+            </div>
+        </div>
+
+        <div class="skills-column">
+            <h3 class="column-title">Soft Skills</h3>
+            
+            <div class="skill-group">
+                <h4 id="soft">Trabajo en Equipo</h4>
+                <p>Comunicación asertiva, Trabajo colaborativo, Adaptabilidad</p>
+            </div>
+
+            <div class="skill-group">
+                <h4 id="soft">Resolución de Problemas</h4>
+                <p>Pensamiento analítico y lógico, Creatividad tecnológica, Atención al detalle</p>
+            </div>
+
+            <div class="skill-group">
+                <h4 id="soft">Desarrollo Profesional</h4>
+                <p>Aprendizaje autónomo, Gestión eficiente del tiempo, Iniciativa e innovación</p>
+            </div>
+        </div>
+
+    </div>
+</section>
+<!-- PROYECTOS -->
+<section id="proyectos" class="projects">
+    <h2 class="section-title">Proyectos Implementados</h2>
+
+    <div class="carousel">
+        <div class="carousel-track">
+
+
+            <div class="project-card">
+            <img src="assets/gestion_indu.jpeg">
+             <div class="project-text">
+                
+                <h3>Gestion Industrial</h3><br>
+<p>
+Sistema automatizado de asignación de personal por semana y maquinaria que optimiza recursos, elimina conflictos operativos y reduce en un 90% el tiempo de planificación, mediante criterios inteligentes basados en habilidades y disponibilidad.
+</p></div>
+            </div>
+
+            <div class="project-card">
+                <img src="assets/categorias.jpeg">
+               <div class="project-text"> <h3>Categorias</h3><br>
+               <p>
+Aplicación para la gestión de solicitudes de cambio de categoría de personal sindicalizado que digitaliza un proceso tradicionalmente manual, reduciendo significativamente tiempos de respuesta (de hasta 6 meses o más) mediante la automatización y gestión eficiente de flujos de aprobación.
+</p></div>
+            </div>
+
+            <div class="project-card">
+                <img src="assets/reporteador.png">
+                <div class="project-text">
+                    <h3>Reporteador</h3><br>
+                    <p>
+                        Aplicación desarrollada en Angular que automatiza la consolidación de datos previamente procesados en múltiples archivos Excel, reduciendo tiempos de análisis y generación de reportes de varios procesos manuales a menos de 10 segundos mediante filtrado y procesamiento lógico eficiente.
+                    </p></div>
+                </div>
+            </div>
+
+        </div>
+
+        <button class="prev">‹</button>
+        <button class="next">›</button>
+    </div>
+</section>
+<section id="contacto" class="contact">
+    <div class="contact-container">
+        <h2 class="section-title">Contactame</h2>
+        <p class="contact-subtitle">¡Mis redes están abiertas!</p>
+        
+        <div class="contact-grid">
+            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=leslie.muniza@gmail.com&su=Interés%20en%20tu%20perfil%20profesional" 
+             target="_blank" 
+             class="contact-card">
+                <div class="lottie-wrapper">
+                    <dotlottie-player src="assets/gma.json" background="transparent" speed="1" loop autoplay></dotlottie-player>
+                </div>
+                <span>Gmail</span>
+            </a>
+
+            <a href="https://www.linkedin.com/in/leslie-mu%C3%B1iz/" target="_blank" class="contact-card">
+                <div class="lottie-wrapper">
+                    <dotlottie-player src="assets/linkedin.json" background="transparent" speed="1" loop autoplay></dotlottie-player>
+                </div>
+                <span>LinkedIn</span>
+            </a>
+
+            <a href="https://wa.me/528113017271?text=Hola%20Leslie,%20vi%20tu%20portafolio%20y%20me%20gustaría%20contactarte." target="_blank" class="contact-card">
+                <div class="lottie-wrapper">
+                    <dotlottie-player src="assets/whatsapp.json" background="transparent" speed="1" loop autoplay></dotlottie-player>
+                </div>
+                <span>WhatsApp</span>
+            </a>
+
+            <a href="https://github.com/Leslie222-desing" target="_blank" class="contact-card">
+                <div class="lottie-wrapper">
+                    <dotlottie-player src="assets/github.json" background="transparent" speed="1" loop autoplay></dotlottie-player>
+                </div>
+                <span>GitHub</span>
+            </a>
+        </div>
+    </div>
+</section>
+<script src="script.js" defer></script>
+</body>
+</html>

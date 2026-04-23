@@ -1,0 +1,799 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=PT+Sans+Narrow:wght@400;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+/* FONDO DINÁMICO */
+body {
+    background: #b5b5d4;
+    color: white;
+    overflow-x: hidden;
+}
+
+/* CONTENEDOR PARA ANIMACIÓN */
+.bg-animation {
+    position: relative;
+}
+
+/* blobs de color */
+.bg-animation::before,
+.bg-animation::after {
+    content: "";
+    position: fixed;
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+    filter: blur(120px);
+    opacity: 0.4;
+    z-index: -1;
+}
+
+.bg-animation::before {
+    background: #a7ff63;
+    top: -100px;
+    left: -100px;
+    animation: move1 6s infinite alternate;
+}
+
+.bg-animation::after {
+    background: #9500ff;
+    bottom: -100px;
+    right: -100px;
+    animation: move2 6s infinite alternate;
+}
+
+@keyframes move1 {
+    0% { transform: translate(0,0); }
+    100% { transform: translate(200px, 200px); }
+}
+
+@keyframes move2 {
+    0% { transform: translate(0,0); }
+    100% { transform: translate(-200px, -150px); }
+}
+
+/* NAV */
+.nav {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    
+    width: 200%;
+    max-width: 1300px;
+    padding: 35px 30px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 20px;
+
+    box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+
+    z-index: 1000;
+}
+.logo-container {
+    position: relative; /* Base para el posicionamiento */
+    width: 100px;        /* Un ancho fijo para que el nav no se mueva */
+    height: 300%;       /* Mantiene el alto original del nav */
+}
+
+#lottie-logo {
+    position: absolute;
+    top: 10%;
+    left: 95%;
+    transform: translate(-50%, -50%); /* Lo centra perfectamente */
+    width: 300px;  /* Aquí puedes subir el tamaño sin miedo */
+    height: 300px;
+    z-index: 10;   /* Asegura que se vea sobre el fondo */
+}
+
+
+/* Esto asegura que el reproductor no tenga márgenes internos extra */
+dotlottie-player {
+    display: block;
+    margin: 0;
+    padding: 0;
+}
+
+.nav a {
+    margin-left: 25px;
+    text-decoration: none;
+    color: #fff;
+    font-weight: 500;
+    position: relative;
+}
+
+/* línea animada elegante */
+.nav a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    width: 0%;
+    height: 2px;
+    background: #a7ff6387;
+    transition: 0.3s;
+}
+
+.nav a:hover::after {
+    width: 100%;
+}
+
+.nav h2 {
+    font-weight: 700;
+    color: white;
+    letter-spacing: 2px;
+}
+
+.nav::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 20px;
+    background: linear-gradient(120deg, transparent, rgba(255,255,255,0.2), transparent);
+    opacity: 0.3;
+}
+
+/* HERO */
+.hero {
+    min-height: 130vh;
+    display: flex;
+    align-items: center;
+    padding: 0 10%;
+}
+
+.hero-container {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    align-items: center;
+    gap: 20px;
+    width: 300%;
+}
+
+/* TEXTO */
+.hero-text {
+    max-width: 700px;
+}
+.puesto {
+    font-size: 80px;
+    line-height: 1;
+    letter-spacing: 2px;
+    font-weight: 800;
+    font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+/* Contenedor para la máscara */
+/* Contenedor del recorte */
+.hero-desc-container {
+    overflow: hidden; 
+    display: block; 
+    width: 100%;
+    /* Añade un pequeño padding para que no se corte el texto al subir */
+    padding: 5px 0; 
+}
+
+.hero-desc.typing-text {
+    opacity: 0;
+    transform: translateY(30px); /* Reduce de 100% a 30px para que no viaje tanto */
+    transition: transform 0.8s ease, opacity 0.8s ease;
+}
+
+.hero-desc.typing-text.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+/* Base */
+.line {
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 0;
+    animation: typing 5s steps(90, end) forwards,
+            blink 0.7s step-end infinite;
+}
+
+/* SOLO la línea activa tiene cursor */
+.line.active {
+    border-right: none;
+    
+}
+
+/* Línea 1 */
+.line1.active {
+    animation: typing 1s steps(20, end) forwards;
+    
+}
+
+.line2.active {
+    animation: typing 1s steps(20, end) forwards;
+    animation-delay: 1.3s;
+}
+
+/* Keyframes */
+@keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+}
+
+@keyframes blink {
+    50% { border-color: transparent }
+}
+
+/* Contenedor de la letra que será reemplazada */
+/* Ajuste en el contenedor de la letra */
+.icon-html {
+    position: relative;
+    display: inline-block; /* Cambiado a inline-block para mejor manejo de ancho */
+    vertical-align: middle; /* Alinea el icono con la base del texto */
+    color: transparent; 
+    width: 0.9em;      
+    margin: 0 1.5px;
+    line-height: 1;    /* Evita que el icono estire la línea */
+}
+.icon-css {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    color: transparent; 
+    /* El ancho debe ser pequeño para que la 'S' no deje un hueco enorme */
+    width: 0.8em; 
+    margin: 0 2px;
+    line-height: 1;
+}
+
+.icon-css::after {
+    content: "";
+    position: absolute;
+    /* Centramos el icono respecto al pequeño hueco que dejamos */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -53%); 
+    
+
+    width: 1.4em; 
+    height: 1.4em;
+    
+    background-image: url('assets/css-icon.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    
+    /* Brillo para que resalte en el fondo lavanda */
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.4));
+}
+/* Estilo unificado para los pseudo-elementos */
+.icon-html::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%); /* Centrado vertical exacto */
+    width: 0.8em; /* Un poquito más grande que la letra para que destaque */
+    height: 1.1em;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.icon-html::after {
+    background-image: url('assets/htmlicon.png');
+}
+
+.icon-css::after {
+    background-image: url('assets/cicon.png');
+}
+
+
+/* IMAGEN */
+.hero-image {
+    display: flex;
+    justify-content: center;
+    width: 930px;
+    
+}
+
+.image-wrapper {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%; /* Ocupa el ancho disponible */
+    max-width: 1500px; /* Ajusta este valor (600px, 800px, etc) según qué tan grande lo quieras */
+    margin: 0 auto; /* Lo centra si el padre es más ancho */
+}
+
+
+
+.circle {
+    position: absolute;
+    width: 120%; /* Un poco más grande que el wrapper para que sobresalga */
+    height: 120%;
+    background: radial-gradient(circle, rgba(0,200,255,0.2) 0%, transparent 70%); /* Ejemplo de color */
+    border-radius: 50%;
+    z-index: 1;
+}
+
+dotlottie-player {
+    z-index: 2; /* Para que la animación esté al frente */
+}
+
+.image-wrapper img {
+    width: 100%;
+    border-radius: 20px;
+    transition: transform 0.4s ease;
+}
+
+/* EFECTO HOVER */
+.image-wrapper:hover img {
+    transform: scale(1.05) rotate(1deg);
+}
+
+
+
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(20px); }
+    100% { transform: translateY(0px); }
+}
+
+/* BOTONES */
+button {
+    margin-top: 20px;
+    padding: 12px 25px;
+    border-radius: 999px;
+    border: none;
+    background: #7a27c899;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+}
+
+.ghost {
+    background: transparent;
+    color: white;
+    border: 1px solid rgba(255,255,255,0.3);
+}
+
+/* ABOUT */
+.about-container {
+  /* 1. Dimensiones y Espaciado */
+  max-width: 1600px;
+  margin: 40px auto;
+  padding: 90px 100px;
+  
+  /* 2. Efecto Glassmorphism */
+  background: rgba(255, 255, 255, 0.1); 
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  
+  /* 3. Bordes y Bordes Redondeados */
+  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  
+  /* 4. Alineación del contenido */
+  display: flex;
+  align-items: center;
+  gap: 50px;
+  
+  /* 5. Sombra suave */
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
+
+  /* --- AQUÍ LO NUEVO PARA LA ANIMACIÓN --- */
+  opacity: 0;                /* Empieza invisible */
+  transform: translateY(50px); /* Empieza 50px más abajo */
+  transition: all 1s ease-out; /* Define qué tan suave será el movimiento */
+}
+
+/* Esta clase la pondrá el JavaScript automáticamente al scrollear */
+.about-container.visible {
+  opacity: 1;
+  transform: translateY(0);    /* Sube a su posición real */
+}
+
+/* Ajuste para dispositivos móviles (se mantiene igual) */
+@media (max-width: 768px) {
+  .about-container {
+    flex-direction: column;
+    text-align: center;
+    margin: 20px;
+    padding: 40px 20px;
+    /* Aseguramos que la animación también funcione en móvil */
+    transform: translateY(30px); 
+  }
+  
+  .about-container.visible {
+    transform: translateY(0);
+  }
+}
+.about-image {
+    /* Definimos un tamaño grande y cuadrado para el contenedor de la imagen */
+    flex: 0 0 500px; /* No crece, no se encoge, base fija de 500px */
+    width: 500px;
+    height: 500px;
+    border-radius: none; /* Un poco más redondeado para que combine */
+    overflow: hidden; /* Importante para que la imagen no se salga */
+ /* Borde sutil */
+    transition: transform 0.4s ease;
+}
+
+.about-image img {
+    width: 290%;
+    border-radius: 20px;
+    transition: transform 0.4s ease;
+}
+
+
+.about h2 {
+    font-size: 5rem;
+    margin-bottom: 10px;
+}
+
+.about p {
+    color: #ffffff;
+    line-height: 1.6;
+}
+/*SKILLS*/
+.skills {
+    padding: 100px 20px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.skills-wrapper {
+    display: flex;
+    gap: 40px; /* Espacio entre las dos columnas */
+    justify-content: center;
+    flex-wrap: wrap; /* Para que en móviles se ponga una debajo de otra */
+}
+
+.skills-column {
+    flex: 1;
+    min-width: 350px; /* Evita que se hagan muy flacas */
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 40px;
+    border-radius: 30px;
+    text-align: left;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+}
+
+.skills-column:hover {
+    transform: translateY(-5px);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.column-title {
+    font-size: 2rem;
+    color: #fff;
+    margin-bottom: 30px;
+    font-family: 'Bebas Neue', cursive;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+.skill-group {
+    margin-bottom: 25px;
+}
+
+#tecnico {
+    color: #8e6ccc; /* Color lavanda para resaltar los subtítulos */
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+#soft{
+    color: #a9df9b; /* Color lavanda para resaltar los subtítulos */
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.skill-group p {
+    color: #f2eded;
+    font-size: 1rem;
+    line-height: 1.6;
+    opacity: 0.9;
+}
+
+/* Ajuste para móviles */
+@media (max-width: 768px) {
+    .skills-column {
+        min-width: 100%;
+    }
+}
+
+/* --- SECCIÓN PROYECTOS --- */
+.projects {
+    padding: 120px 20px;
+    text-align: center;
+}
+
+.section-title {
+    font-size: 3rem;
+    margin-bottom: 60px;
+    font-family: 'Bebas Neue', cursive;
+    letter-spacing: 2px;
+}
+
+/* --- CONTENEDOR --- */
+.carousel {
+    position: relative;
+    max-width: 1230px;
+    margin: auto;
+    overflow: visible; /* Permite que el scale(1.1) no se corte */
+}
+
+.carousel-track {
+    display: flex;
+    align-items: center;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* --- CARDS --- */
+.project-card {
+    min-width: 380px;
+    height: 550px;
+    margin: 0 15px;
+    padding: 25px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    transition: all 0.5s ease;
+    display: flex;
+    flex-direction: column;
+    animation: floatingCard 5s infinite ease-in-out; /* Animación de flotación */
+}
+
+/* Animación de flotación para las laterales */
+@keyframes floatingCard {
+    0%, 100% { transform: scale(0.8) translateY(0); }
+    50% { transform: scale(0.8) translateY(-15px); }
+}
+
+/* Animación para la activa */
+@keyframes floatingCardActive {
+    0%, 100% { transform: scale(1.1) translateY(0); }
+    50% { transform: scale(1.1) translateY(-20px); }
+}
+
+.project-card.active {
+    opacity: 1;
+    z-index: 2;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    animation: floatingCardActive 5s infinite ease-in-out;
+}
+
+/* --- PAUSA AL HOVER --- */
+.carousel:hover .project-card {
+    animation-play-state: paused !important; /* Detiene la flotación */
+}
+
+.project-card:hover {
+    transform: scale(1.15) !important; /* Un pequeño zoom extra al pasar el mouse */
+    z-index: 10;
+}
+
+/* --- TEXTO Y REVELADO --- */
+.project-card .project-text {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.5s ease;
+    margin-top: 20px;
+}
+
+.project-card.active .project-text {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.3s;
+}
+
+.project-text h2 {
+    font-size: 1.8rem;
+    color: #fff;
+    margin-bottom: 10px;
+}
+
+.project-text p {
+    color: #f2eded;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.project-card img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 15px;
+}
+
+/* --- BOTONES --- */
+.prev, .next {
+    position: absolute;
+    top: 70%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+    font-size: 1.5rem;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    border-radius: 50%;
+    z-index: 100;
+    transition: 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.prev { left: -10px; }
+.next { right: -10px; }
+@media (max-width: 1400px) {
+    .prev { left: 10px; }
+    .next { right: 10px; }
+}
+.prev:hover, .next:hover { background: rgba(255, 255, 255, 0.3); }
+
+/* CTA */
+.contact {
+    padding: 120px 20px;
+    background: transparent;
+}
+
+.contact-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.contact-subtitle {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 1.1rem;
+    margin-bottom: 50px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* GRID DE CONTACTO */
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 25px;
+    justify-content: center;
+}
+
+/* TARJETAS INDIVIDUALES */
+.contact-card {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 24px;
+    padding: 30px 20px;
+    text-decoration: none;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+/* Ocultamos los iconos por defecto */
+.contact-card dotlottie-player {
+    opacity: 0;
+    transform: scale(0.8);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+/* Cuando la sección de contacto entra en vista, los mostramos todos a la vez */
+.contact.visible .contact-card dotlottie-player {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* CONTENEDOR LOTTIE (Para que no flote por todos lados) */
+.lottie-wrapper {
+    width: 70px;
+    height: 70px;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.contact-card span {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.9rem;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+}
+
+/* HOVER EFFECTS */
+.contact-card:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.3);
+    transform: translateY(-12px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+.contact-card:hover span {
+    color: #fff;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+/* AJUSTE PARA MÓVILES */
+@media (max-width: 480px) {
+    .contact-grid {
+        grid-template-columns: 1fr 1fr; /* Dos por fila en celulares */
+        gap: 15px;
+    }
+    
+    .contact-card {
+        padding: 20px 10px;
+    }
+}
+/* CURSOR GLOW */
+.cursor-glow {
+    position: fixed;
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle, rgba(255, 247, 99, 0.3), transparent 70%);
+    pointer-events: none;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+
+    .hero-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .hero-image {
+        margin-top: 40px;
+    }
+
+    .project {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .about-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .nav {
+        flex-direction: column;
+        gap: 10px;
+        padding: 15px;
+    }
+}
