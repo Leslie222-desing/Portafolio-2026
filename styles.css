@@ -9,19 +9,18 @@
     font-family: 'Inter', sans-serif;
 }
 
-/* FONDO DINÁMICO */
 body {
     background: #b5b5d4;
     color: white;
     overflow-x: hidden;
 }
 
-/* CONTENEDOR PARA ANIMACIÓN */
+
 .bg-animation {
     position: relative;
 }
 
-/* blobs de color */
+
 .bg-animation::before,
 .bg-animation::after {
     content: "";
@@ -65,7 +64,7 @@ body {
     left: 50%;
     transform: translateX(-50%);
     
-    width: 200%;
+    width: 95%;
     max-width: 1300px;
     padding: 35px 30px;
 
@@ -84,24 +83,104 @@ body {
 
     z-index: 1000;
 }
+
+.menu-toggle {
+    display: none;
+    font-size: 1.8rem;
+    cursor: pointer;
+}
+
+
+.nav-links {
+    display: flex;
+    gap: 25px;
+}
+@media (max-width: 768px) {
+
+  
+    .nav {
+        left: 0;
+        transform: none;
+        width: 100%;
+        border-radius: 0;
+        padding: 15px 20px;
+        position: fixed;
+    }
+
+    .menu-toggle {
+        display: block;
+        margin-left: auto;
+        font-size: 1.8rem;
+        cursor: pointer;
+        z-index: 2000;
+    }
+
+    /* CONTENEDOR DEL NAV */
+    .nav {
+        position: relative;
+    }
+
+    /* LINKS OCULTOS */
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        gap: 15px;
+
+        background: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        border-radius: 20px;
+
+        padding: 15px;
+
+        position: absolute;
+        right: 15px;
+        top: 100%;
+
+        width: 200px;
+    }
+
+    
+    .nav-links.active {
+        display: flex;
+    }
+
+  
+    .nav a {
+        font-size: 0.9rem;
+        margin-left: 0;
+        text-align: center;
+    }
+
+}
 .logo-container {
-    position: relative; /* Base para el posicionamiento */
-    width: 100px;        /* Un ancho fijo para que el nav no se mueva */
-    height: 300%;       /* Mantiene el alto original del nav */
+    position: relative; 
+    width: 100px;       
+    height: 300%;       
 }
 
 #lottie-logo {
     position: absolute;
-    top: 10%;
-    left: 95%;
-    transform: translate(-50%, -50%); /* Lo centra perfectamente */
-    width: 300px;  /* Aquí puedes subir el tamaño sin miedo */
-    height: 300px;
-    z-index: 10;   /* Asegura que se vea sobre el fondo */
+    transform: translate(-50%, -50%); 
+    width: 120px;
+    height: 120px;
+    left: 50%;
+    top: 50%;
+
+    z-index: 10;  
+}
+@media (min-width: 769px) {
+    #lottie-logo {
+        width: 300px;
+        height: 300px;
+        left: 95%;
+        top: 10%;
+    }
 }
 
 
-/* Esto asegura que el reproductor no tenga márgenes internos extra */
 dotlottie-player {
     display: block;
     margin: 0;
@@ -116,7 +195,7 @@ dotlottie-player {
     position: relative;
 }
 
-/* línea animada elegante */
+
 .nav a::after {
     content: "";
     position: absolute;
@@ -145,7 +224,9 @@ dotlottie-player {
     border-radius: 20px;
     background: linear-gradient(120deg, transparent, rgba(255,255,255,0.2), transparent);
     opacity: 0.3;
+    pointer-events: none;
 }
+
 
 /* HERO */
 .hero {
@@ -160,7 +241,12 @@ dotlottie-player {
     grid-template-columns: 1.2fr 1fr;
     align-items: center;
     gap: 20px;
-    width: 300%;
+    width: 100%;
+}
+@media (min-width: 1200px) {
+    .hero-image {
+        transform: scale(1.2);
+    }
 }
 
 /* TEXTO */
@@ -168,25 +254,23 @@ dotlottie-player {
     max-width: 700px;
 }
 .puesto {
-    font-size: 80px;
+    font-size: clamp(32px, 8vw, 80px);
     line-height: 1;
     letter-spacing: 2px;
     font-weight: 800;
     font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
-/* Contenedor para la máscara */
-/* Contenedor del recorte */
+
 .hero-desc-container {
     overflow: hidden; 
     display: block; 
     width: 100%;
-    /* Añade un pequeño padding para que no se corte el texto al subir */
     padding: 5px 0; 
 }
 
 .hero-desc.typing-text {
     opacity: 0;
-    transform: translateY(30px); /* Reduce de 100% a 30px para que no viaje tanto */
+    transform: translateY(30px); 
     transition: transform 0.8s ease, opacity 0.8s ease;
 }
 
@@ -194,7 +278,7 @@ dotlottie-player {
     opacity: 1;
     transform: translateY(0);
 }
-/* Base */
+
 .line {
     display: inline-block;
     overflow: hidden;
@@ -204,13 +288,13 @@ dotlottie-player {
             blink 0.7s step-end infinite;
 }
 
-/* SOLO la línea activa tiene cursor */
+
 .line.active {
     border-right: none;
     
 }
 
-/* Línea 1 */
+
 .line1.active {
     animation: typing 1s steps(20, end) forwards;
     
@@ -231,23 +315,21 @@ dotlottie-player {
     50% { border-color: transparent }
 }
 
-/* Contenedor de la letra que será reemplazada */
-/* Ajuste en el contenedor de la letra */
+
 .icon-html {
     position: relative;
-    display: inline-block; /* Cambiado a inline-block para mejor manejo de ancho */
-    vertical-align: middle; /* Alinea el icono con la base del texto */
+    display: inline-block; 
+    vertical-align: middle;
     color: transparent; 
     width: 0.9em;      
     margin: 0 1.5px;
-    line-height: 1;    /* Evita que el icono estire la línea */
+    line-height: 1;   
 }
 .icon-css {
     position: relative;
     display: inline-block;
     vertical-align: middle;
     color: transparent; 
-    /* El ancho debe ser pequeño para que la 'S' no deje un hueco enorme */
     width: 0.8em; 
     margin: 0 2px;
     line-height: 1;
@@ -256,7 +338,6 @@ dotlottie-player {
 .icon-css::after {
     content: "";
     position: absolute;
-    /* Centramos el icono respecto al pequeño hueco que dejamos */
     top: 50%;
     left: 50%;
     transform: translate(-50%, -53%); 
@@ -269,18 +350,16 @@ dotlottie-player {
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
-    
-    /* Brillo para que resalte en el fondo lavanda */
     filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.4));
 }
-/* Estilo unificado para los pseudo-elementos */
+
 .icon-html::after {
     content: "";
     position: absolute;
     top: 50%;
     left: 0;
-    transform: translateY(-50%); /* Centrado vertical exacto */
-    width: 0.8em; /* Un poquito más grande que la letra para que destaque */
+    transform: translateY(-50%); 
+    width: 0.8em; 
     height: 1.1em;
     background-size: contain;
     background-repeat: no-repeat;
@@ -295,13 +374,31 @@ dotlottie-player {
     background-image: url('assets/cicon.png');
 }
 
-
-/* IMAGEN */
 .hero-image {
     display: flex;
     justify-content: center;
-    width: 930px;
+    width: 100%;
+    max-width: 500px;
     
+}
+@media (min-width: 768px) {
+    .hero-image {
+        max-width: 600px;
+    }
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+    .hero-image {
+        max-width: 1200px;
+    }
+}
+
+/* Pantallas grandes */
+@media (min-width: 1400px) {
+    .hero-image {
+        max-width: 1200px;
+    }
 }
 
 .image-wrapper {
@@ -318,7 +415,7 @@ dotlottie-player {
 
 .circle {
     position: absolute;
-    width: 120%; /* Un poco más grande que el wrapper para que sobresalga */
+    width: 120%; 
     height: 120%;
     background: radial-gradient(circle, rgba(0,200,255,0.2) 0%, transparent 70%); /* Ejemplo de color */
     border-radius: 50%;
@@ -326,7 +423,7 @@ dotlottie-player {
 }
 
 dotlottie-player {
-    z-index: 2; /* Para que la animación esté al frente */
+    z-index: 2; 
 }
 
 .image-wrapper img {
@@ -335,11 +432,9 @@ dotlottie-player {
     transition: transform 0.4s ease;
 }
 
-/* EFECTO HOVER */
 .image-wrapper:hover img {
     transform: scale(1.05) rotate(1deg);
 }
-
 
 
 @keyframes float {
@@ -348,7 +443,6 @@ dotlottie-player {
     100% { transform: translateY(0px); }
 }
 
-/* BOTONES */
 button {
     margin-top: 20px;
     padding: 12px 25px;
@@ -371,23 +465,24 @@ button:hover {
     border: 1px solid rgba(255,255,255,0.3);
 }
 
+
 /* ABOUT */
 .about-container {
-  /* 1. Dimensiones y Espaciado */
+  
   max-width: 1600px;
   margin: 40px auto;
   padding: 90px 100px;
   
-  /* 2. Efecto Glassmorphism */
+  
   background: rgba(255, 255, 255, 0.1); 
   backdrop-filter: blur(15px);
   -webkit-backdrop-filter: blur(15px);
   
-  /* 3. Bordes y Bordes Redondeados */
+  
   border-radius: 24px;
   border: 1px solid rgba(255, 255, 255, 0.2);
   
-  /* 4. Alineación del contenido */
+ 
   display: flex;
   align-items: center;
   gap: 50px;
@@ -395,37 +490,57 @@ button:hover {
   /* 5. Sombra suave */
   box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
 
-  /* --- AQUÍ LO NUEVO PARA LA ANIMACIÓN --- */
-  opacity: 0;                /* Empieza invisible */
-  transform: translateY(50px); /* Empieza 50px más abajo */
-  transition: all 1s ease-out; /* Define qué tan suave será el movimiento */
+ 
+  opacity: 0;               
+  transform: translateY(50px); 
+  transition: all 1s ease-out; 
 }
 
-/* Esta clase la pondrá el JavaScript automáticamente al scrollear */
+
 .about-container.visible {
   opacity: 1;
-  transform: translateY(0);    /* Sube a su posición real */
+  transform: translateY(0);    
 }
 
-/* Ajuste para dispositivos móviles (se mantiene igual) */
 @media (max-width: 768px) {
+
   .about-container {
     flex-direction: column;
     text-align: center;
-    margin: 20px;
-    padding: 40px 20px;
-    /* Aseguramos que la animación también funcione en móvil */
+    margin: 15px;
+    padding: 30px 15px; 
+    gap: 25px;
     transform: translateY(30px); 
   }
+
+  .about-image {
+    flex: none; 
+    width: 100%;
+    max-width: 250px;
+    height: auto; 
+  }
+
+  .about h2 {
+    font-size: 2.2rem;
+  }
+
+  .about p {
+    font-size: 0.95rem;
+    text-align: center;
+  }
+
+}
   
   .about-container.visible {
     transform: translateY(0);
   }
-}
+
 .about-image {
     /* Definimos un tamaño grande y cuadrado para el contenedor de la imagen */
-    flex: 0 0 500px; /* No crece, no se encoge, base fija de 500px */
-    width: 500px;
+    flex: 0 0 500px; 
+    width: 100%;
+    max-width: 350px;
+    height: auto;
     height: 500px;
     border-radius: none; /* Un poco más redondeado para que combine */
     overflow: hidden; /* Importante para que la imagen no se salga */
@@ -434,7 +549,7 @@ button:hover {
 }
 
 .about-image img {
-    width: 290%;
+    width: 100%;
     border-radius: 20px;
     transition: transform 0.4s ease;
 }
@@ -465,7 +580,8 @@ button:hover {
 
 .skills-column {
     flex: 1;
-    min-width: 350px; /* Evita que se hagan muy flacas */
+    min-width: 300px;
+    max-width: 500px; 
     background: rgba(255, 255, 255, 0.05);
     backdrop-filter: blur(15px);
     border: 1px solid rgba(255, 255, 255, 0.1);
@@ -496,14 +612,14 @@ button:hover {
 }
 
 #tecnico {
-    color: #8e6ccc; /* Color lavanda para resaltar los subtítulos */
+    color: #8e6ccc;
     font-size: 1.1rem;
     margin-bottom: 8px;
     text-transform: uppercase;
     letter-spacing: 1px;
 }
 #soft{
-    color: #a9df9b; /* Color lavanda para resaltar los subtítulos */
+    color: #a9df9b; 
     font-size: 1.1rem;
     margin-bottom: 8px;
     text-transform: uppercase;
@@ -517,13 +633,34 @@ button:hover {
     opacity: 0.9;
 }
 
-/* Ajuste para móviles */
 @media (max-width: 768px) {
-    .skills-column {
-        min-width: 100%;
-    }
-}
 
+    .skills {
+        padding: 60px 15px;
+    }
+
+    .skills-wrapper {
+        flex-direction: column;
+        gap: 20px;
+        align-items: center;
+    }
+
+    .skills-column {
+        min-width: 100%; 
+        padding: 25px;
+    }
+
+    .column-title {
+        font-size: 1.5rem;
+        text-align: center;
+    }
+
+    .skill-group p {
+        font-size: 0.95rem;
+        text-align: center;
+    }
+
+}
 /* --- SECCIÓN PROYECTOS --- */
 .projects {
     padding: 120px 20px;
@@ -548,13 +685,31 @@ button:hover {
 .carousel-track {
     display: flex;
     align-items: center;
+    justify-content: center;
     transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+@media (max-width: 768px) {
+
+    .carousel {
+        overflow: visible;
+        padding: 0 10px;
+    }
+
+    .carousel-track {
+        justify-content: center;
+    }
+
+    .project-card {
+        min-width: 85%; 
+        margin: 0 auto;
+    }
+
 }
 
 /* --- CARDS --- */
 .project-card {
-    min-width: 380px;
-    height: 550px;
+    min-width: 280px;
+    height: auto;
     margin: 0 15px;
     padding: 25px;
     border-radius: 20px;
@@ -768,6 +923,49 @@ button:hover {
     transform: translate(-50%, -50%);
     z-index: -1;
 }
+.reveal {
+    opacity: 0;
+    transform: translateY(60px);
+    transition: all 0.8s ease;
+}
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.reveal-left {
+    opacity: 0;
+    transform: translateX(-80px);
+    transition: all 0.8s ease;
+}
+.reveal-left.active {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.reveal-right {
+    opacity: 0;
+    transform: translateX(80px);
+    transition: all 0.8s ease;
+}
+.reveal-right.active {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.reveal-scale {
+    opacity: 0;
+    transform: scale(0.8);
+    transition: all 0.6s ease;
+}
+.reveal-scale.active {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.reveal-delay {
+    transition-delay: 0.2s;
+}
 
 /* RESPONSIVE */
 @media (max-width: 768px) {
@@ -795,5 +993,10 @@ button:hover {
         flex-direction: column;
         gap: 10px;
         padding: 15px;
+    }
+}
+@media (max-width: 768px) {
+    button {
+        width: 100%;
     }
 }
